@@ -24,3 +24,25 @@ Diagonally mirror an image. For example, the pixel on the left-bottom side will 
 ```
 python main.py -D /path/to/input-image /path/to/output-image
 ```
+(todo list)
+## Histogram
+
+## Connected Components
+
+-----------------------
+## Erosion
+
+## Dilation
+
+## Complement
+
+## Smoothing
+
+## Edging
+
+## Amplification
+
+## Shrinking
+
+## Rotaion
+
