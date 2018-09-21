@@ -5,7 +5,7 @@ Processing grey images [bmp,jpg,jpeg,png...] with algorithms
 - PIL  https://stackoverflow.com/a/20061019
 
 # Usage
-
+see ```python main.py -h```for details.
 
 ## Up-side-down
 Turn an image by 180 degrees.  Top to bottom, bottom to top.
