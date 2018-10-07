@@ -42,12 +42,12 @@ Users will get a better image by redistributing the intensities, a.k.a. brightne
 
 ![image](https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/JPEG_example_subimage.svg/400px-JPEG_example_subimage.svg.png)
 
-以上圖為例，有8x8=64個pixel。藉由計算從原本的intensity範圍重新分配到[0,255]（相同的intensity投影後必須還是相同的值），可以得到一個看似不錯的效果。為了重新分配，我們先計算每個intensity的cumulative distribution值（由小的intensity開始累加），代表此intensity在[0,255]之間的位置與0的距離比例。
+以上圖為例，有8x8=64個pixel。最低intensity為52，個數為一個，第二低的intensity為55，個數為三個。藉由計算從原本的intensity範圍重新分配到[0,255]（相同的intensity投影後必須還是相同的值），可以得到一個看似不錯的效果。為了重新分配，我們先計算每個intensity的cumulative distribution值（由小的intensity開始累加），代表此intensity在[0,255]之間的位置與0的距離比例。以上圖為例，第一低intensity(52)的cumulative distribution值為1，第二低(55)為4。
 可以得到下面這個式子：
 
 ![image](https://wikimedia.org/api/rest_v1/media/math/render/svg/49e7d6c2a0e08b6c363dc7df0c4acd6629d8e150)
 
-MxN代表全部的pixel數，L代表要投影的範圍（256）。cdf/MN即代表與0的距離比例，再乘上255就會是在[0,255]中的值。取round的原因是因為intensity必為整數。而式子中分子與分母減去CDFmin是為了消去此式子中的bias。
+MxN代表全部的pixel數，L代表要投影的範圍（256）。cdf/MN即代表與0的距離比例，再乘上255就會是在[0,255]中的值。取round的原因是因為intensity必為整數。而式子中分子與分母減去CDFmin是為了消去此式子中的bias。以上圖為例，52會分配成0，55會分配成round(255 x (4-1)/(64-1)) = 12。
 由此可得一個重新分配intensity後的image，因為相較於原圖比較平均，因此看起來會較為顯色。
 ```
 python main.py -E /path/to/input-image /path/to/output-image
