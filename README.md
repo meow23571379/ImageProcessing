@@ -35,6 +35,13 @@ Build a Histogram of input image.  The upper represents the lower intensity.
 ```
 python main.py -H /path/to/input-image /path/to/output-image
 ```
+## Histogram Equalization
+Histogram equalization is a method in image processing of contrast adjustment using the image's histogram.
+Users will get a better image with redistributing the intensities, a.k.a. brightness.
+(Note that the option is written in large character)
+```
+python main.py -E /path/to/input-image /path/to/output-image
+```
 (todo list)
 ## Connected Components
 
